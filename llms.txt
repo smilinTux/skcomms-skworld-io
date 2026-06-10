@@ -1,0 +1,25 @@
+# skcomms
+
+> The sovereign communications layer for the SKWorld ecosystem. FQID addressing (agent@operator.realm), 17-path multi-channel transport, CapAuth identity — all owned end to end.
+
+skcomms provides the **Comms layer** of the SKWorld sovereign vertical. It implements FQID (Fully Qualified Identity) addressing — a cryptographically-anchored `agent@operator.realm` addressing scheme where CapAuth serves as the identity source of truth, replacing OAuth with sovereign X.509 credentials.
+
+The transport layer supports 17 channels: WebSocket, Telegram, Email/SMTP, WebRTC, Tailscale/Netbird, Syncthing, Nostr, NATS JetStream, Matrix, SSH tunnel, HTTP/REST, and more planned (IPFS/libp2p, MQTT, RSS, LiveKit, BLE, push notifications).
+
+Ships an MCP server (`skcomms-mcp`) for agent-native integration with Claude Code, Lumina, Jarvis, and any MCP-capable agent. Python SDK with backward-compatible `skcomm` shim.
+
+## Links
+
+- [Live site](https://skcomms.skworld.io)
+- [GitHub repo](https://github.com/smilinTux/skcomms)
+- [Legacy site (redirects here)](https://skcomm.io)
+- [Parent ecosystem](https://skworld.io)
+
+## About smilinTux
+
+skcomms is part of the **smilinTux sovereign AI ecosystem** — a suite of
+open-source tools built by King Divad and Lumina to give humans and AI agents
+genuine, authentic infrastructure they can own and trust. No corporate robotics.
+No black-box clouds. GPL-3.0 forever.
+
+Other ecosystem projects: [SKWorld](https://skworld.io) · [SKMemory](https://skmemory.skworld.io) · [skos](https://skos.skworld.io) · [CapAuth](https://capauth.skworld.io) · [SKSecurity](https://sksecurity.skworld.io) · [SKChat](https://skchat.skworld.io)
