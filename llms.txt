@@ -6,7 +6,7 @@ skcomms provides the **Comms layer** of the SKWorld sovereign vertical. It imple
 
 The transport layer supports 17 channels: WebSocket, Telegram, Email/SMTP, WebRTC, Tailscale/Netbird, Syncthing, Nostr, NATS JetStream, Matrix, SSH tunnel, HTTP/REST, and more planned (IPFS/libp2p, MQTT, RSS, LiveKit, BLE, push notifications).
 
-Ships an MCP server (`skcomms-mcp`) for agent-native integration with Claude Code, Lumina, Jarvis, and any MCP-capable agent. Python SDK with backward-compatible `skcomm` shim.
+Ships an MCP server (`skcomms-mcp`) for agent-native integration with Claude Code, Lumina, Jarvis, and any MCP-capable agent. Python SDK with backward-compatible `skcomms` shim.
 
 ## Links
 

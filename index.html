@@ -954,10 +954,10 @@
 
         <div class="feature-card gold reveal" style="transition-delay:.25s">
           <span class="feature-icon">🐍</span>
-          <h3 class="feature-title">Python SDK + skcomm Shim</h3>
+          <h3 class="feature-title">Python SDK + skcomms Shim</h3>
           <p class="feature-desc">
             Full Python SDK (<code style="color:var(--cyan);font-family:var(--mono)">pip install skcomms</code>).
-            Drop-in <code style="color:var(--dim);font-family:var(--mono)">skcomm</code> shim for backward compatibility —
+            Drop-in <code style="color:var(--dim);font-family:var(--mono)">skcomms</code> shim for backward compatibility —
             all 155 existing import sites continue to work during the migration window.
           </p>
           <div class="feature-pills">
@@ -1020,9 +1020,9 @@
           <div><span class="t-prompt">>>> </span><span class="t-cmd">await comms.send("jarvis@chiap04.pengu", "hey — task complete")</span></div>
           <div class="t-green">  ✓ delivered via websocket (4ms) · fallback: telegram</div>
           <br>
-          <div class="t-cyan"># Old skcomm imports still work during migration</div>
-          <div><span class="t-prompt">>>> </span><span class="t-cmd">from skcomm.transport import WebSocketTransport  <span class="t-out"># shim resolves to skcomms</span></span></div>
-          <div class="t-bold">  DeprecationWarning: skcomm is deprecated — import from skcomms</div>
+          <div class="t-cyan"># Old skcomms imports still work during migration</div>
+          <div><span class="t-prompt">>>> </span><span class="t-cmd">from skcomms.transport import WebSocketTransport  <span class="t-out"># shim resolves to skcomms</span></span></div>
+          <div class="t-bold">  DeprecationWarning: skcomms is deprecated — import from skcomms</div>
         </div>
       </div>
 
