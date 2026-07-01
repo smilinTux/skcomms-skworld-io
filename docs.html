@@ -122,6 +122,13 @@
       max-width: 1280px; margin: 0 auto;
       gap: 0; position: relative;
     }
+    /* Backdrop is a mobile-only overlay — keep it OUT of the grid flow on all
+       widths (without this base rule it renders as a block grid item on desktop
+       and steals column 1, squishing .docs-main into the sidebar width). */
+    .sidebar-backdrop {
+      display: none; position: fixed; inset: 57px 0 0 0; z-index: 140;
+      background: rgba(0,0,0,.5);
+    }
 
     /* Sidebar */
     .docs-sidebar {
