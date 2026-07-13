@@ -2,23 +2,72 @@
   "repo": "smilinTux/skcomms",
   "branch": "main",
   "path": "docs",
-  "generated": "2026-06-30",
-  "note": "Committed fallback for the /docs viewer when the GitHub Contents API is unavailable or rate-limited. Regenerate from: curl -sS https://api.github.com/repos/smilinTux/skcomms/contents/docs",
+  "generated": "2026-07-13",
+  "note": "Committed fallback for the /docs viewer when the GitHub Contents API is unavailable or rate-limited. Regenerate from: python docs-manifest-gen.py smilinTux/skcomms --out docs-manifest.json",
   "docs": [
-    { "name": "skfed-federation-guide.md", "title": "SKFed Federation — Architecture, Operations & Self-Service Guide" },
-    { "name": "federation-data-comms-architecture.md", "title": "Federation Data-Comms Architecture — design analysis" },
-    { "name": "skfed-consent-design.md", "title": "SKFed First-Contact Consent — Design" },
-    { "name": "crypto-architecture.md", "title": "skcomms — Cryptography Architecture & Quantum-Resistance" },
-    { "name": "ARCHITECTURE.md", "title": "skcomms Architecture" },
-    { "name": "state-sync-rearch-plan.md", "title": "State-Sync Re-architecture Plan — [skfed][P5]" },
-    { "name": "funnel-privacy.md", "title": "SKFed funnel privacy — front with a neutral domain" },
-    { "name": "mode-b-tailnet-deploy.md", "title": "Mode B — tailnet-only private deployment (no funnel)" },
-    { "name": "access-plane-p7.md", "title": "P7 — The Access Plane: skos everywhere" },
-    { "name": "access-plane-p8.md", "title": "Access Plane P8 — File-Location Index Backfill + Ingest Wiring" },
-    { "name": "cot-bridge.md", "title": "CoT Bridge — ATAK/iTAK on the SKFed sovereign net" },
-    { "name": "tak-vs-skfed-analysis.md", "title": "TAK vs SKFed — head-to-head + what to liberate" },
-    { "name": "SYNCTHING_TOPOLOGY.md", "title": "Syncthing Topology — skcomms realm message tree" },
-    { "name": "PAIRING.md", "title": "Getting started: pair with another operator" },
-    { "name": "DISCORD_SETUP.md", "title": "Discord Bot Setup Guide" }
+    {
+      "name": "ARCHITECTURE.md",
+      "title": "skcomms Architecture"
+    },
+    {
+      "name": "DISCORD_SETUP.md",
+      "title": "Discord Bot Setup Guide"
+    },
+    {
+      "name": "HANDOFF-skfed-s2s-opus-delivery.md",
+      "title": "HANDOFF — skfed-s2s reports \"delivered\" but opus never receives"
+    },
+    {
+      "name": "PAIRING.md",
+      "title": "Getting started: pair with another operator"
+    },
+    {
+      "name": "SYNCTHING_TOPOLOGY.md",
+      "title": "Syncthing Topology — skcomms realm message tree"
+    },
+    {
+      "name": "access-plane-p7.md",
+      "title": "P7 — The Access Plane: skos everywhere"
+    },
+    {
+      "name": "access-plane-p8.md",
+      "title": "Access Plane P8 — File-Location Index Backfill + Ingest Wiring"
+    },
+    {
+      "name": "cot-bridge.md",
+      "title": "CoT Bridge — ATAK/iTAK on the SKFed sovereign net"
+    },
+    {
+      "name": "crypto-architecture.md",
+      "title": "skcomms — Cryptography Architecture & Quantum-Resistance"
+    },
+    {
+      "name": "federation-data-comms-architecture.md",
+      "title": "Federation Data-Comms Architecture — design analysis (2026-06-22)"
+    },
+    {
+      "name": "funnel-privacy.md",
+      "title": "SKFed funnel privacy — front the funnel with a neutral domain"
+    },
+    {
+      "name": "mode-b-tailnet-deploy.md",
+      "title": "Mode B — tailnet-only private deployment (no funnel)"
+    },
+    {
+      "name": "skfed-consent-design.md",
+      "title": "SKFed First-Contact Consent — Design (research-grounded)"
+    },
+    {
+      "name": "skfed-federation-guide.md",
+      "title": "SKFed Federation — Architecture, Operations & Self-Service Guide"
+    },
+    {
+      "name": "state-sync-rearch-plan.md",
+      "title": "State-Sync Re-architecture Plan — [skfed][P5]"
+    },
+    {
+      "name": "tak-vs-skfed-analysis.md",
+      "title": "TAK vs SKFed — head-to-head + what to liberate (2026-06-22)"
+    }
   ]
 }
