@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "skcomms Architecture",
+    "subtitle": "Envelope v1, PGP signing, TOFU trust, realm registry, and consent grants over a Syncthing-replicated realm tree",
+    "output": "skcomms.architecture.html",
+    "quality_profile": "showcase"
+  },
+  "components": [
+    { "id": "envelope", "type": "backend", "label": "Envelope v1 + Signing", "sublabel": "FQID-addressed schema, detached PGP sign", "pos": [60, 60], "size": [190, 70] },
+    { "id": "mailbox", "type": "backend", "label": "Mailbox", "sublabel": "send (build/sign/drop), inbox (read/verify)", "pos": [60, 180], "size": [190, 70] },
+    { "id": "tofu", "type": "security", "label": "TOFU Trust Store", "sublabel": "known_fingerprints.json", "pos": [60, 300], "size": [190, 70] },
+    { "id": "registry", "type": "backend", "label": "Realm Registry + Peers", "sublabel": "syncthing-shared default, opt-in https/tailscale", "pos": [300, 300], "size": [210, 70] },
+    { "id": "grants", "type": "security", "label": "Consent Grants", "sublabel": "PGP-signed cross-operator recall tokens", "pos": [300, 60], "size": [210, 70] },
+    { "id": "capauth", "type": "security", "label": "capauth", "sublabel": "FQID + PGP key resolver", "pos": [600, 60], "size": [170, 64] },
+    { "id": "skmemory", "type": "database", "label": "skmemory", "sublabel": "consumes consent grants", "pos": [600, 300], "size": [170, 64] },
+    { "id": "transport", "type": "external", "label": "skcomms (transport)", "sublabel": "Syncthing / file / WebRTC / Nostr", "pos": [60, 440], "size": [230, 70] },
+    { "id": "skchat", "type": "frontend", "label": "skchat", "sublabel": "chat app over the protocol", "pos": [340, 440], "size": [170, 64] },
+    { "id": "skalert", "type": "messagebus", "label": "sk-alert bus", "sublabel": "optional, by presence", "pos": [820, 60], "size": [170, 64] },
+    { "id": "skscheduler", "type": "backend", "label": "skscheduler", "sublabel": "optional health sweep", "pos": [820, 180], "size": [170, 64] },
+    { "id": "skcapstone", "type": "backend", "label": "skcapstone", "sublabel": "cluster.json: realm / operator", "pos": [820, 300], "size": [170, 64] }
+  ],
+  "boundaries": [
+    { "kind": "region", "label": "skcomms protocol (this repo)", "wraps": ["envelope", "mailbox", "tofu", "registry", "grants"] },
+    { "kind": "region", "label": "Core (identity and trust)", "wraps": ["capauth", "skmemory"] },
+    { "kind": "region", "label": "Platform services (optional, by presence)", "wraps": ["skalert", "skscheduler", "skcapstone"] }
+  ],
+  "connections": [
+    { "id": "capauth-envelope", "from": "capauth", "to": "envelope", "label": "resolves FQID + signing key", "variant": "security" },
+    { "id": "skcapstone-envelope", "from": "skcapstone", "to": "envelope", "label": "realm / operator", "variant": "dashed" },
+    { "id": "envelope-mailbox", "from": "envelope", "to": "mailbox", "label": "build, sign" },
+    { "id": "mailbox-tofu", "from": "mailbox", "to": "tofu", "label": "verify signer" },
+    { "id": "registry-mailbox", "from": "registry", "to": "mailbox", "label": "peer wiring" },
+    { "id": "mailbox-transport", "from": "mailbox", "to": "transport", "label": "writes realm tree", "variant": "emphasis" },
+    { "id": "grants-tofu", "from": "grants", "to": "tofu", "label": "granter fingerprint check", "variant": "security" },
+    { "id": "grants-skmemory", "from": "grants", "to": "skmemory", "label": "consent tokens", "variant": "emphasis" },
+    { "id": "transport-skchat", "from": "transport", "to": "skchat", "label": "replicated envelopes" },
+    { "id": "mailbox-skchat", "from": "mailbox", "to": "skchat", "label": "signed Envelope v1", "variant": "emphasis" },
+    { "id": "envelope-skalert", "from": "envelope", "to": "skalert", "label": "alerts (optional)", "variant": "dashed" },
+    { "id": "mailbox-skscheduler", "from": "mailbox", "to": "skscheduler", "label": "health sweep (optional)", "variant": "dashed" }
+  ],
+  "cards": [
+    { "dot": "cyan", "title": "Protocol", "items": ["Envelope v1: FQID-addressed, canonical_bytes() for signing", "Detached PGP signature + SHA-256 content hash as a tamper pre-check", "Mailbox writes a signed envelope to the sender's outbox and the peer's inbox"] },
+    { "dot": "rose", "title": "Trust", "items": ["TOFU on the PGP fingerprint: first key wins, a conflict is refused, never silently rebound", "Consent grants are PGP-signed tokens, verified offline against the TOFU-pinned key"] },
+    { "dot": "emerald", "title": "Composition", "items": ["capauth resolves identity, skcapstone supplies realm/operator from cluster.json", "A Syncthing-shared (default) or opt-in https/tailscale registry resolves peer connectivity", "The transport repo (Syncthing / file / WebRTC / Nostr) replicates the realm tree; skchat and skmemory consume the schema"] }
+  ]
+}
